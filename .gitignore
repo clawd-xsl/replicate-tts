@@ -1,0 +1,7 @@
+GPT-SoVITS/
+ref_audio/
+config/
+.cog/
+*.wav
+*.ogg
+deploy.sh
