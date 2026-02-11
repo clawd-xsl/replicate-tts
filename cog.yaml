@@ -20,7 +20,6 @@ build:
     - "peft<0.18.0"
     - "chardet"
     - "PyYAML"
-    - "jieba_fast"
     - "jieba"
     - "split-lang"
     - "fast_langdetect>=0.3.1"
@@ -48,6 +47,7 @@ build:
     - "libsndfile1"
     - "cmake"
     - "build-essential"
+    - "swig"
   run:
-    - "pip install 'cmake<4' && pip install 'pyopenjtalk>=0.4.1'"
+    - "pip install 'cmake<4' && pip install 'pyopenjtalk>=0.4.1' && pip install --no-binary jieba_fast jieba_fast"
 predict: "predict.py:Predictor"

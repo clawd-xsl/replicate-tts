@@ -5,3 +5,5 @@ config/
 *.wav
 *.ogg
 deploy.sh
+__pycache__/
+output

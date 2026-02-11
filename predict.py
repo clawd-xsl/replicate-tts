@@ -7,12 +7,15 @@ import numpy as np
 import soundfile as sf
 from cog import BasePredictor, Input, Path
 
-# Set working directory to GPT-SoVITS code
+# Set working directory to GPT-SoVITS code BEFORE any imports
 GPT_SOVITS_DIR = "/src/GPT-SoVITS"
 GPT_SOVITS_CODE = "/src/GPT-SoVITS/GPT_SoVITS"
 os.chdir(GPT_SOVITS_DIR)
 sys.path.insert(0, GPT_SOVITS_DIR)
 sys.path.insert(0, GPT_SOVITS_CODE)
+
+# Now import TTS (after path/cwd setup)
+from TTS_infer_pack.TTS import TTS, TTS_Config
 
 REF_AUDIOS = {
     "happy": {
@@ -31,8 +34,6 @@ CONFIG_PATH = "/src/config/firefly.yaml"
 class Predictor(BasePredictor):
     def setup(self):
         """Load the model into memory."""
-        from TTS_infer_pack.TTS import TTS, TTS_Config
-
         config = TTS_Config(CONFIG_PATH)
         config.device = "cuda"
         config.is_half = True
